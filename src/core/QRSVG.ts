@@ -256,6 +256,7 @@ export default class QRSVG {
           y,
           height: cornersSquareSize,
           width: cornersSquareSize,
+          class: 'corner-square',
           name: `corners-square-color-${column}-${row}`
         });
       }
@@ -305,6 +306,7 @@ export default class QRSVG {
           y: y + dotSize * 2,
           height: cornersDotSize,
           width: cornersDotSize,
+          class: 'corner-dot',
           name: `corners-dot-color-${column}-${row}`
         });
       }
