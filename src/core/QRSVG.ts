@@ -256,7 +256,7 @@ export default class QRSVG {
           y,
           height: cornersSquareSize,
           width: cornersSquareSize,
-          class: 'corner-square',
+          className: "corner-square",
           name: `corners-square-color-${column}-${row}`
         });
       }
@@ -306,7 +306,7 @@ export default class QRSVG {
           y: y + dotSize * 2,
           height: cornersDotSize,
           width: cornersDotSize,
-          class: 'corner-dot',
+          className: "corner-dot",
           name: `corners-dot-color-${column}-${row}`
         });
       }
@@ -402,6 +402,7 @@ export default class QRSVG {
     y,
     height,
     width,
+    className,
     name
   }: {
     options?: Gradient;
@@ -411,6 +412,7 @@ export default class QRSVG {
     y: number;
     height: number;
     width: number;
+    className?: string;
     name: string;
   }): void {
     const size = width > height ? width : height;
@@ -426,6 +428,9 @@ export default class QRSVG {
       if (options.type === gradientTypes.radial) {
         gradient = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient");
         gradient.setAttribute("id", name);
+        if (className) {
+          gradient.setAttribute("class", className ?? "");
+        }
         gradient.setAttribute("gradientUnits", "userSpaceOnUse");
         gradient.setAttribute("fx", String(x + width / 2));
         gradient.setAttribute("fy", String(y + height / 2));
@@ -467,6 +472,9 @@ export default class QRSVG {
 
         gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
         gradient.setAttribute("id", name);
+        if (className) {
+          gradient.setAttribute("class", className ?? "");
+        }
         gradient.setAttribute("gradientUnits", "userSpaceOnUse");
         gradient.setAttribute("x1", String(Math.round(x0)));
         gradient.setAttribute("y1", String(Math.round(y0)));
